@@ -129,12 +129,14 @@
 
 <h2 id="9-Fibonacci-矩阵快速幂"><a href="#9-Fibonacci-矩阵快速幂" class="headerlink" title="9.Fibonacci 矩阵快速幂"></a>9.Fibonacci 矩阵快速幂</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Arr</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a0, a1, b0, b1;</span><br><span class="line">	<span class="built_in">Arr</span>(<span class="type">int</span> a0 = <span class="number">1</span>, <span class="type">int</span> a1 = <span class="number">1</span>, <span class="type">int</span> b0 = <span class="number">1</span>, <span class="type">int</span> b1 = <span class="number">0</span>) :<span class="built_in">a0</span>(a0), <span class="built_in">a1</span>(a1), <span class="built_in">b0</span>(b0), <span class="built_in">b1</span>(b1) &#123;&#125;</span><br><span class="line">	Arr <span class="keyword">operator</span> * (Arr a) &#123;</span><br><span class="line">		Arr ans;</span><br><span class="line">	ans.a0=(a0 * a.a0 + a1 * a.b0);</span><br><span class="line">	ans.a1 = (a0 * a.a1 + a1 * a.b1) ;</span><br><span class="line">	ans.b0 = (b0 * a.a0 + b1 * a.b0) ;</span><br><span class="line">	ans.b1 = (b0 * a.a1 + b1 * a.b1) ;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;A;</span><br><span class="line"><span class="comment">//矩阵的乘法</span></span><br><span class="line"></span><br><span class="line"><span class="function">Arr <span class="title">pow</span><span class="params">(Arr a,<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//矩阵的指数运算</span></span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>)<span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">return</span> n&amp;<span class="number">1</span>?a*<span class="built_in">pow</span>(a*a,n/<span class="number">2</span>) :<span class="built_in">pow</span>(a*a, n / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Fib_Matrix</span><span class="params">(Arr a, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//n为幂，分奇偶</span></span><br><span class="line">	<span class="keyword">if</span> (n &lt; <span class="number">2</span>)<span class="keyword">return</span> n;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> 	<span class="built_in">pow</span>(a, n).a1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
 <h2 id="10-证明给定互素的正整数c和m，请证明在mod-m-的意义上，存在唯一确定的整数值"><a href="#10-证明给定互素的正整数c和m，请证明在mod-m-的意义上，存在唯一确定的整数值" class="headerlink" title="10.证明给定互素的正整数c和m，请证明在mod m 的意义上，存在唯一确定的整数值"></a>10.证明给定互素的正整数c和m，请证明在mod m 的意义上，存在唯一确定的整数值</h2><p>$$<br>c^{-1} 使得cc^{-1}≡(mod\ m)。<br>\由上式可得：cc^{-1}+bm\ &#x3D;\ 1<br>\设c’为乘法逆元，c_2’为不同乘法逆元<br>\c_2’&gt;c’<br>\c_2’&#x3D;c’+k<br>\可得k&#x3D;\frac mc (b_1-b_2)<br>\因为c ≠ 0 所以 k≡0(mod\ m)<br>\c_2’≡c’（mod\ m）<br>\所以c^{-1}乘法逆元在mod\ m的意义上存在唯一的乘法逆元<br>$$</p>
+<hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cutegirl-tsk.github.io/2022/09/19/CINTA-%E4%BA%8C/" data-id="cl8ycyorl00000swhcd7ahxyv" data-title="CINTA(二)" class="article-share-link">Share</a>
+      <a data-url="https://cutegirl-tsk.github.io/2022/09/19/CINTA-%E4%BA%8C/" data-id="cl8yd0sl50000tkwhc25a40ix" data-title="CINTA(二)" class="article-share-link">Share</a>
       
       
       
@@ -188,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cutegirl-tsk.github.io/2022/09/03/CINTA%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cl8ycyorp00010swh48iydtom" data-title="CINTA（一）" class="article-share-link">Share</a>
+      <a data-url="https://cutegirl-tsk.github.io/2022/09/03/CINTA%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cl8yd0sla0001tkwh8q3pgcgq" data-title="CINTA（一）" class="article-share-link">Share</a>
       
       
       
@@ -229,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cutegirl-tsk.github.io/2022/08/30/%E6%95%B4%E6%95%B0%E8%BD%AC%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6-/" data-id="cl8ycyorz00060swh1uiccu6o" data-title="整数转为二进制" class="article-share-link">Share</a>
+      <a data-url="https://cutegirl-tsk.github.io/2022/08/30/%E6%95%B4%E6%95%B0%E8%BD%AC%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6-/" data-id="cl8yd0slf0004tkwh2w6wc0qs" data-title="整数转为二进制" class="article-share-link">Share</a>
       
       
       
@@ -282,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cutegirl-tsk.github.io/2022/08/29/hello-world/" data-id="cl8ycyos000070swh5bx3c1bx" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://cutegirl-tsk.github.io/2022/08/29/hello-world/" data-id="cl8yd0sle0003tkwhab4kd9v0" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
