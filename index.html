@@ -75,6 +75,81 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CINTA-二" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/19/CINTA-%E4%BA%8C/" class="article-date">
+  <time class="dt-published" datetime="2022-09-19T14:01:32.000Z" itemprop="datePublished">2022-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/19/CINTA-%E4%BA%8C/">CINTA(二)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="7-手动计算以下模m下a的乘法逆元"><a href="#7-手动计算以下模m下a的乘法逆元" class="headerlink" title="7.手动计算以下模m下a的乘法逆元"></a>7.手动计算以下模m下a的乘法逆元</h2><p>（1）m&#x3D;11,a&#x3D;5;</p>
+<p>​	由拓展欧几里得： </p>
+<p>​		ar+mt&#x3D;gcd(a,m)</p>
+<p>​		 0a  1m  11</p>
+<p>​		 1 0   5</p>
+<p>​		-2  1   1</p>
+<p> ∴ 模m下a的逆元是-2</p>
+<hr>
+<p>（2）m&#x3D;121,a&#x3D;13;</p>
+<p>由拓展欧几里得：</p>
+<p>​	ar + mt &#x3D;gcd(a,m)</p>
+<p>0   1   121</p>
+<p>1   0    13</p>
+<p>-9  1     4</p>
+<p>28  -3    1</p>
+<p>∴模m下的a逆元为28</p>
+<hr>
+<p>(3)m&#x3D;1021,a&#x3D;131;</p>
+<p>由拓展欧几里得：</p>
+<p>0   1   1021</p>
+<p>1   0     131</p>
+<p>-7   1    104</p>
+<p>8     -1    27</p>
+<p>-31   4    23</p>
+<p>39    -5    4</p>
+<p>-226  29  3</p>
+<p>265   -34   1</p>
+<p>∴模m下，a的逆元为265  </p>
+<h2 id="8-模指数运算"><a href="#8-模指数运算" class="headerlink" title="8.模指数运算"></a>8.模指数运算</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exponential_mod</span> <span class="params">(<span class="type">int</span> x,<span class="type">int</span> y,<span class="type">int</span> m)</span></span>&#123;</span><br><span class="line">    <span class="comment">//指数的模运算  计算x^y  mod  m</span></span><br><span class="line">	<span class="type">int</span> temp = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(y&gt;<span class="number">0</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span> (y &amp; <span class="number">1</span>) temp = (temp * x)%m;		</span><br><span class="line">    <span class="comment">//判断是否为奇数</span></span><br><span class="line">	y = y / <span class="number">2</span>;</span><br><span class="line">	x = (x * x) % m;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-Fibonacci-矩阵快速幂"><a href="#9-Fibonacci-矩阵快速幂" class="headerlink" title="9.Fibonacci 矩阵快速幂"></a>9.Fibonacci 矩阵快速幂</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Arr</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> a0, a1, b0, b1;</span><br><span class="line">	<span class="built_in">Arr</span>(<span class="type">int</span> a0 = <span class="number">1</span>, <span class="type">int</span> a1 = <span class="number">1</span>, <span class="type">int</span> b0 = <span class="number">1</span>, <span class="type">int</span> b1 = <span class="number">0</span>) :<span class="built_in">a0</span>(a0), <span class="built_in">a1</span>(a1), <span class="built_in">b0</span>(b0), <span class="built_in">b1</span>(b1) &#123;&#125;</span><br><span class="line">	Arr <span class="keyword">operator</span> * (Arr a) &#123;</span><br><span class="line">		Arr ans;</span><br><span class="line">	ans.a0=(a0 * a.a0 + a1 * a.b0);</span><br><span class="line">	ans.a1 = (a0 * a.a1 + a1 * a.b1) ;</span><br><span class="line">	ans.b0 = (b0 * a.a0 + b1 * a.b0) ;</span><br><span class="line">	ans.b1 = (b0 * a.a1 + b1 * a.b1) ;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;A;</span><br><span class="line"><span class="comment">//矩阵的乘法</span></span><br><span class="line"></span><br><span class="line"><span class="function">Arr <span class="title">pow</span><span class="params">(Arr a,<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//矩阵的指数运算</span></span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>)<span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">return</span> n&amp;<span class="number">1</span>?a*<span class="built_in">pow</span>(a*a,n/<span class="number">2</span>) :<span class="built_in">pow</span>(a*a, n / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Fib_Matrix</span><span class="params">(Arr a, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//n为幂，分奇偶</span></span><br><span class="line">	<span class="keyword">if</span> (n &lt; <span class="number">2</span>)<span class="keyword">return</span> n;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> 	<span class="built_in">pow</span>(a, n).a1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="10-证明给定互素的正整数c和m，请证明在mod-m-的意义上，存在唯一确定的整数值"><a href="#10-证明给定互素的正整数c和m，请证明在mod-m-的意义上，存在唯一确定的整数值" class="headerlink" title="10.证明给定互素的正整数c和m，请证明在mod m 的意义上，存在唯一确定的整数值"></a>10.证明给定互素的正整数c和m，请证明在mod m 的意义上，存在唯一确定的整数值</h2><p>$$<br>c^{-1} 使得cc^{-1}≡(mod\ m)。<br>\由上式可得：cc^{-1}+bm\ &#x3D;\ 1<br>\设c’为乘法逆元，c_2’为不同乘法逆元<br>\c_2’&gt;c’<br>\c_2’&#x3D;c’+k<br>\可得k&#x3D;\frac mc (b_1-b_2)<br>\因为c ≠ 0 所以 k≡0(mod\ m)<br>\c_2’≡c’（mod\ m）<br>\所以c^{-1}乘法逆元在mod\ m的意义上存在唯一的乘法逆元<br>$$</p>
+<p>不知道为什么公式块上传后就不显示编辑好的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cutegirl-tsk.github.io/2022/09/19/CINTA-%E4%BA%8C/" data-id="cl8ye0vs200002gwh9wn1an5l" data-title="CINTA(二)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Homework-mod/" rel="tag">Homework,mod,</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-CINTA（一）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/09/03/CINTA%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
@@ -115,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cutegirl-tsk.github.io/2022/09/03/CINTA%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cl8ydw7e80001jcwh45dbfi5s" data-title="CINTA（一）" class="article-share-link">Share</a>
+      <a data-url="https://cutegirl-tsk.github.io/2022/09/03/CINTA%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cl8ye0vs800012gwh7cgka1kx" data-title="CINTA（一）" class="article-share-link">Share</a>
       
       
       
@@ -156,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cutegirl-tsk.github.io/2022/08/30/%E6%95%B4%E6%95%B0%E8%BD%AC%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6-/" data-id="cl8ydw7e30000jcwhawdu5dq7" data-title="整数转为二进制" class="article-share-link">Share</a>
+      <a data-url="https://cutegirl-tsk.github.io/2022/08/30/%E6%95%B4%E6%95%B0%E8%BD%AC%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6-/" data-id="cl8ye0vsd00042gwh4sxz4zd2" data-title="整数转为二进制" class="article-share-link">Share</a>
       
       
       
@@ -209,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cutegirl-tsk.github.io/2022/08/29/hello-world/" data-id="cl8ydw7ec0003jcwhfegh8p07" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://cutegirl-tsk.github.io/2022/08/29/hello-world/" data-id="cl8ye0vsc00032gwh2odjgyy6" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -234,7 +309,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homeworks/" rel="tag">Homeworks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/none/" rel="tag">none</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homework-mod/" rel="tag">Homework,mod,</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homeworks/" rel="tag">Homeworks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/none/" rel="tag">none</a></li></ul>
     </div>
   </div>
 
@@ -244,7 +319,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Homeworks/" style="font-size: 10px;">Homeworks</a> <a href="/tags/none/" style="font-size: 10px;">none</a>
+      <a href="/tags/Homework-mod/" style="font-size: 10px;">Homework,mod,</a> <a href="/tags/Homeworks/" style="font-size: 10px;">Homeworks</a> <a href="/tags/none/" style="font-size: 10px;">none</a>
     </div>
   </div>
 
@@ -264,6 +339,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/09/19/CINTA-%E4%BA%8C/">CINTA(二)</a>
+          </li>
         
           <li>
             <a href="/2022/09/03/CINTA%EF%BC%88%E4%B8%80%EF%BC%89/">CINTA（一）</a>
